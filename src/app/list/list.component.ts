@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -8,11 +8,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
+  private corsHeaders: HttpHeaders;
   public restaurantsArray$!: Observable<Irestaurant[]>;
   //urlIp: string = 'http://127.0.0.1:8080/easytable-0.0.1-SNAPSHOT';
   urlIp: string = 'http://127.0.0.1:9000';
   private urlApirestaurants = this.urlIp + '/restaurant/restaurants';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.corsHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    });
+  }
   ngOnInit(): void {
     this.restaurantsArray$ = this.getRestaurants();
   }
