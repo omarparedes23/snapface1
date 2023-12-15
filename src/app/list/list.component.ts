@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -25,7 +25,17 @@ export class ListComponent {
     headers: this.corsHeaders;
   }
   getRestaurants(): Observable<Irestaurant[]> {
-    return this.http.get<Irestaurant[]>(this.urlApirestaurants);
+    return this.http.get<Irestaurant[]>(this.urlApirestaurants).pipe(
+      tap((resultat) => console.log('Résultat de la requête : ', resultat)),
+      catchError((error) => {
+        if (error.error instanceof ErrorEvent) {
+          console.log(`Error: ${error.error.message}`);
+        } else {
+          console.log(`Error: ${error.message}`);
+        }
+        return [];
+      })
+    );
   }
 }
 

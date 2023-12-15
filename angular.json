@@ -80,12 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "snapface:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "snapface:build:production"
             },
             "development": {
-              "browserTarget": "snapface:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "snapface:build:development"
             }
           },
           "defaultConfiguration": "development"
