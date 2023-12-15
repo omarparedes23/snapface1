@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListComponent {
   public restaurantsArray$!: Observable<Irestaurant[]>;
-  urlIp: string = 'http://127.0.0.1:8080/easytable-0.0.1-SNAPSHOT';
+  //urlIp: string = 'http://127.0.0.1:8080/easytable-0.0.1-SNAPSHOT';
+  urlIp: string = 'http://127.0.0.1:9000';
   private urlApirestaurants = this.urlIp + '/restaurant/restaurants';
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
