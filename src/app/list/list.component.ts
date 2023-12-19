@@ -10,15 +10,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'; //HttpHeaders
 export class ListComponent {
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
+      'Access-Control-Max-Age': '3600',
+      'Access-Control-Allow-Headers':
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+      'Access-Control-Allow-Methods': 'GET,POST, OPTION,PUT, DELETE, OPTIONS',
+      Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+      'Content-Type': 'application/json',
     }),
   };
   //private corsHeaders: HttpHeaders;
   public restaurantsArray$!: Observable<Irestaurant[]>;
-  urlIp: string = 'http://127.0.0.1:8080/easytable-0.0.1-SNAPSHOT';
+  //urlIp: string = 'http://127.0.0.1:8080/easytable-0.0.1-SNAPSHOT';
+  //urlIp: string = 'http://easytable.zapto.org:8080/easytable-0.0.1-SNAPSHOT';
+
   //urlIp: string = 'http://52.47.152.220:9000';
-  //urlIp: string = 'http://127.0.0.1:9000/api';
+  urlIp: string = 'http://127.0.0.1:9000';
   //urlIp: string = '/api'; //descomentar
   //urlIp: string = 'http://localhost:9000';
   private urlApirestaurants = this.urlIp + '/restaurant/restaurants';
